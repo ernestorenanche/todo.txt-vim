@@ -39,7 +39,7 @@ function! Match_date_before(date)
     let parts = split(a:date, '-')
     call add(branches, Match_number_before(parts[0]) . '-\d\{2}-\d\{2}')
     call add(branches, parts[0] . '-' . Match_number_before(parts[1]) . '-\d\{2}')
-    call add(branches, parts[0] . '-' . parts[1] . '-' .Match_number_before(parts[2]))
+    call add(branches, parts[0] . '-' . parts[1] . '-' .Match_number_before(parts[2] + 1))
 
     return '\%(' . join(branches, '\|') .'\)'
 endfunction
@@ -79,41 +79,41 @@ function! Match_date_after(date)
     return '\%(' . join(branches, '\|') .'\)'
 endfunction
 
-syntax match TodoDone      '^[xX]\s.\+$'
-syntax match TodoPriorityA '^([aA])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
-syntax match TodoPriorityB '^([bB])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
-syntax match TodoPriorityC '^([cC])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
-syntax match TodoPriorityD '^([dD])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
-syntax match TodoPriorityE '^([eE])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
-syntax match TodoPriorityF '^([fF])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
-syntax match TodoPriorityG '^([gG])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
-syntax match TodoPriorityH '^([hH])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
-syntax match TodoPriorityI '^([iI])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
-syntax match TodoPriorityJ '^([jJ])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
-syntax match TodoPriorityK '^([kK])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
-syntax match TodoPriorityL '^([lL])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
-syntax match TodoPriorityM '^([mM])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
-syntax match TodoPriorityN '^([nN])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
-syntax match TodoPriorityO '^([oO])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
-syntax match TodoPriorityP '^([pP])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
-syntax match TodoPriorityQ '^([qQ])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
-syntax match TodoPriorityR '^([rR])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
-syntax match TodoPriorityS '^([sS])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
-syntax match TodoPriorityT '^([tT])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
-syntax match TodoPriorityU '^([uU])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
-syntax match TodoPriorityV '^([vV])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
-syntax match TodoPriorityW '^([wW])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
-syntax match TodoPriorityX '^([xX])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
-syntax match TodoPriorityY '^([yY])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
-syntax match TodoPriorityZ '^([zZ])\s.\+'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoDone      '^[xX]\s.\+'
+syntax match TodoPriorityA '^([aA])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoPriorityB '^([bB])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoPriorityC '^([cC])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoPriorityD '^([dD])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoPriorityE '^([eE])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoPriorityF '^([fF])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoPriorityG '^([gG])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoPriorityH '^([hH])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoPriorityI '^([iI])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoPriorityJ '^([jJ])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoPriorityK '^([kK])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoPriorityL '^([lL])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoPriorityM '^([mM])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoPriorityN '^([nN])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoPriorityO '^([oO])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoPriorityP '^([pP])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoPriorityQ '^([qQ])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoPriorityR '^([rR])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoPriorityS '^([sS])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoPriorityT '^([tT])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoPriorityU '^([uU])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoPriorityV '^([vV])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoPriorityW '^([wW])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoPriorityX '^([xX])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoPriorityY '^([yY])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
+syntax match TodoPriorityZ '^([zZ])\s.\+\ze\(+\|@\|due\)'    contains=TodoDate,TodoProject,TodoContext,TodoOverDueDate,TodoDateIndicator
 
-syntax match TodoProject       '\(^\|\W\)+[^[:blank:]]\+' contains=NONE
-syntax match TodoContext       '\(^\|\W\)@[^[:blank:]]\+' contains=NONE
-syntax match TodoDateIndicator 'due: '                    contains=NONE
+syntax match   TodoProject       '\(^\|\W\)+[^[:blank:]]\+' contains=NONE
+syntax match   TodoContext       '\(^\|\W\)@[^[:blank:]]\+' contains=NONE
+" syntax keyword TodoDateIndicator due :
 
 let today=strftime("%F")
-let regex_before_today='^.*' . Match_date_before(today) . '.*$'
-let regex_after_today=Match_date_after(today)
+let regex_before_today='^\(x\)\@!.*due:\s' . Match_date_before(today) . '.*$'
+let regex_after_today='due:\s\zs' . Match_date_after(today)
 
 execute "syntax match TodoDate /"        . regex_after_today  . "/ contains=NONE"
 execute "syntax match TodoOverdueDate /" . regex_before_today . "/ contains=NONE"
